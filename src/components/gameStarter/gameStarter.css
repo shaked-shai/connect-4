@@ -1,0 +1,56 @@
+.gameStarter {
+  width: 300px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background-color: #bffff4;
+}
+
+.gameStarter form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.gameStarter label {
+  margin-bottom: 10px;
+}
+
+.gameStarter input {
+  width: 50%;
+  height: 5px;
+  margin-bottom: 20px;
+  margin-left: 20px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.gameStarter button {
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.gameStarter .addPlayer {
+  width: 40%;
+  height: 30px;
+  background-color: #2e6a9e;
+}
+
+.gameStarter .addPlayer:hover {
+  background-color: #1f4a70;
+}
+
+.gameStarter .startGame {
+  width: 100%;
+  height: 40px;
+  background-color: #4caf50;
+  margin-top: 10px;
+}
+
+.gameStarter .startGame:hover {
+  background-color: #3e8e41;
+}
