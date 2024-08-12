@@ -1,0 +1,16 @@
+.playerList {
+  list-style-type: none;
+  padding: 20px;
+}
+
+.playerList .playerTab {
+  display: flex;
+  margin: 10px 0 10px 0;
+  padding-left: 10px;
+  height: 50px;
+  justify-content: center;
+  align-items: center;
+  border: 3px solid black;
+  font-size: large;
+  color: white;
+}

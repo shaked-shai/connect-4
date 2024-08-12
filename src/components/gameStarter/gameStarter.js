@@ -5,6 +5,7 @@ import PlayerInput from "./playerInput";
 function GameStarter({
   players,
   onPlayerNameChange,
+  onPlayerColorChange,
   onAddPlayer,
   onStartGame,
 }) {
@@ -16,6 +17,7 @@ function GameStarter({
             key={player.id}
             player={player}
             onPlayerNameChange={onPlayerNameChange}
+            onPlayerColorChange={onPlayerColorChange}
           >
             {player.id}
           </PlayerInput>
@@ -24,7 +26,7 @@ function GameStarter({
           add Player
         </button>
       </div>
-      <button className="startGame" type="submit" onClick={onStartGame}>
+      <button className="startGamebtn" type="submit" onClick={onStartGame}>
         Start Game
       </button>
     </form>

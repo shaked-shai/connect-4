@@ -1,0 +1,16 @@
+.sideBar {
+  display: block;
+  width: 10%;
+  background-color: rgb(55, 118, 0);
+  color: white;
+}
+
+.sideBar h1 {
+  padding-left: 20px;
+  padding-top: 10px;
+}
+
+.sideBar hr {
+  width: 97%;
+  border: 3px solid black;
+}
