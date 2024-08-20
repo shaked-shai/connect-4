@@ -1,0 +1,37 @@
+.player-input {
+  display: flex;
+  margin-bottom: 15px;
+  justify-content: space-evenly;
+}
+
+.player-name-lable {
+  font-size: larger;
+}
+
+.remove-player-button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  color: #ff0000;
+  font-size: larger;
+}
+
+.remove-player-button:hover {
+  color: white;
+  background-color: #ff4d4d;
+}
+
+.player-name-input {
+  width: 30%;
+  height: 5px;
+  margin-left: 20px;
+  margin-right: 20px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.player-color {
+  height: 30px;
+}
