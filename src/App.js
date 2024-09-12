@@ -9,31 +9,18 @@ const defaultPlayers = {
   1: { id: 1, name: "Player 1", color: "blue" },
 };
 
-//TODO: change the default colors to be in gameStarter
-const defaultColors = {
-  green: {
-    id: 0,
-    color: "green",
-    selected: false,
-  },
-  yellow: {
-    id: 1,
-    color: "yellow",
-    selected: false,
-  },
-  purple: {
-    id: 2,
-    color: "purple",
-    selected: false,
-  },
-};
-
 function App() {
   const [players, setPlayers] = useState(defaultPlayers);
   const [gameStarted, setGameStarted] = useState(false);
-  const [colors, setColors] = useState(defaultColors);
 
-  function handlePlayerNameChange(name, id) {
+  function handlePlayerChange(id, player) {
+    setPlayers((prevPlayers) => ({
+      ...prevPlayers,
+      [id]: player,
+    }));
+  }
+
+  /*function handlePlayerNameChange(name, id) {
     setPlayers((prevPlayers) => ({
       ...prevPlayers,
       [id]: { ...prevPlayers[id], name },
@@ -51,7 +38,7 @@ function App() {
         color: selectedColor,
       };
 
-      setColors((prevColors) => {
+      /*setColors((prevColors) => {
         const updatedColors = { ...prevColors };
         if (prevColor !== "") {
           updatedColors[prevColor].selected = false;
@@ -67,7 +54,7 @@ function App() {
         [PlayerId]: updatedPlayer,
       };
     });
-  }
+  }*/
 
   function handleAddPlayer() {
     setPlayers((prevPlayers) => ({
@@ -96,10 +83,8 @@ function App() {
     <div className="App">
       {!gameStarted ? (
         <GameStarter
-          players={Object.values(players)}
-          colors={colors}
-          onPlayerNameChange={handlePlayerNameChange}
-          onPlayerColorChange={handlePlayerColorChange}
+          players={players}
+          onPlayerChange={handlePlayerChange}
           onAddPlayer={handleAddPlayer}
           onRemovePlayer={handleRemovePlayer}
           onStartGame={handleGameStart}

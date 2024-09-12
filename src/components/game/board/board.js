@@ -35,31 +35,36 @@ export default function Board({ players }) {
   }
 
   function checkForWin(newBoard, i, j, color) {
-    //FIXME: check the win by direction and not group
     const directions = [
-      [-1, -1],
-      [-1, 0],
-      [-1, 1],
-      [0, -1],
-      [0, 1],
-      [1, -1],
-      [1, 0],
-      [1, 1],
+      [
+        // up and down
+        [-1, 0],
+        [1, 0],
+      ],
+      [
+        // left and right
+        [0, -1],
+        [0, 1],
+      ],
+      [
+        // top right and bottom left
+        [-1, 1],
+        [1, -1],
+      ],
+      [
+        // bottom right and top left
+        [1, 1],
+        [-1, -1],
+      ],
     ];
 
-    let N = newBoard.length;
-    let count = 1;
-    let queue = [[i, j]];
-    let visit = new Set();
-    visit.add(`${i},${j}`);
     function checkValidCell(i, j) {
       if (
         i < 0 ||
         j < 0 ||
-        i >= N ||
-        j >= N ||
-        newBoard[i][j] !== color ||
-        visit.has(`${i},${j}`)
+        i >= newBoard.length ||
+        j >= newBoard[i].length ||
+        newBoard[i][j] !== color
       ) {
         return false;
       }
@@ -67,23 +72,30 @@ export default function Board({ players }) {
       return true;
     }
 
-    while (queue.length) {
-      console.log(JSON.stringify(queue));
-      console.log(visit);
-      let [row, col] = queue.shift();
-      for (const [dx, dy] of directions) {
-        let [x, y] = [row + dx, col + dy];
-        if (checkValidCell(x, y)) {
-          if (newBoard[x][y] === color) {
-            queue.push([x, y]);
-            visit.add(`${x},${y}`);
-            count++;
-          }
-        }
+    function dfsDirection(i, j, count, directions) {
+      if (count === 3 || !checkValidCell(i, j)) {
+        return count;
+      }
+
+      return dfsDirection(
+        i + directions[0],
+        j + directions[1],
+        count + 1,
+        directions
+      );
+    }
+    for (const direct of directions) {
+      let directionCount = 1;
+      for (const [dx, dy] of direct) {
+        directionCount += dfsDirection(i + dx, j + dy, 0, [dx, dy]);
+      }
+
+      if (directionCount >= 4) {
+        return true;
       }
     }
 
-    return count >= 4;
+    return false;
   }
 
   return (
@@ -108,7 +120,7 @@ export default function Board({ players }) {
                 <div
                   key={colIndex}
                   className="cell"
-                  onClick={() => handleClick(colIndex)}
+                  onClick={() => (winner ? null : handleClick(colIndex))}
                 >
                   <div className="disc" style={{ backgroundColor: cell }}></div>
                 </div>

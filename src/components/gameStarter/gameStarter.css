@@ -13,6 +13,10 @@
   align-items: center;
 }
 
+.gameStarter .players {
+  margin-bottom: 60px;
+}
+
 .gameStarter .addPlayer {
   color: #fff;
   border: none;
@@ -41,7 +45,6 @@
   width: 100%;
   height: 40px;
   background-color: #4caf50;
-  margin-top: 60px;
 }
 
 .gameStarter .startGamebtn:hover {
